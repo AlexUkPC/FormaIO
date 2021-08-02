@@ -1,0 +1,52 @@
+version: "3"
+services:
+  web_formaio:
+    build:
+      context: .
+      args:
+        USER_ID: "${USER_ID:-1000}"
+        GROUP_ID: "${GROUP_ID:-1000}"
+    ports:
+      - "3023:3000"
+    volumes: 
+      - ./formaio:/opt/app
+      - gem_cache_formaio:/gems
+    env_file: 
+      - .env/development/database_formaio
+      - .env/development/web_formaio
+    environment: 
+      - WEBPACKER_DEV_SERVER_HOST=webpack_dev_server_formaio
+    networks:
+      - network
+  webpack_dev_server_formaio:
+    build:
+      context: .
+      args:
+        USER_ID: "${USER_ID:-1000}"
+        GROUP_ID: "${GROUP_ID:-1000}"
+    command: ./bin/webpack-dev-server
+    ports: 
+      - "3058:3058"
+    volumes: 
+      - ./formaio:/opt/app
+      - gem_cache_formaio:/gems
+    env_file: 
+      - .env/development/database_formaio
+      - .env/development/web_formaio
+    environment: 
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    networks:
+      - network
+  database_formaio:
+    image: postgres
+    env_file: 
+      - .env/development/database_formaio
+    volumes: 
+      - db_data_formaio:/var/lib/postgresql/data
+    networks:
+      - network
+volumes: 
+  db_data_formaio:
+  gem_cache_formaio:
+networks:
+  network:
