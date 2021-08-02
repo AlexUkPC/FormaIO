@@ -3,6 +3,13 @@
     <li><%= link_to "Home", root_path %></li>
     <% if current_user %>
       <li>Hello <%= current_user.email %></li>
+      <li>Role: <%= current_user.role %></li>
+      <% if current_user.admin? %>
+        <li><%= link_to "Users", users_path %></li>
+      <% end %>
+      <% if current_user.collaborator? %>
+        <li>Esti colaborator</li>
+      <% end %>
       <li><%= link_to "Profile", edit_user_registration_path %></li>
       <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
     <% else %>
