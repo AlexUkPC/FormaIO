@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :admin_only, except: [:show]
+  # before_action :authenticate_user!
+  # before_action :admin_only, except: [:show]
+  load_and_authorize_resource
 
 
   def index
@@ -9,11 +10,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    unless current_user.admin?
-      unless @user == current_user
-        redirect_to root_path, :alert => "Access denied."
-      end
-    end
+    # unless current_user.admin?
+    #   unless @user == current_user
+    #     redirect_to root_path, :alert => "Access denied."
+    #   end
+    # end
   end
 
   def update
@@ -33,11 +34,11 @@ class UsersController < ApplicationController
 
   private
 
-  def admin_only
-    unless current_user.admin?
-      redirect_to root_path, :alert => "Access denied."
-    end
-  end
+  # def admin_only
+  #   unless current_user.admin?
+  #     redirect_to root_path, :alert => "Access denied."
+  #   end
+  # end
 
   def secure_params
     params.require(:user).permit(:role)
