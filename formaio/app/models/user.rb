@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  validates :username, presence: true
   enum role: [:user, :collaborator, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
