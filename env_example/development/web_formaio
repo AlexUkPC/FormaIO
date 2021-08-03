@@ -1,1 +1,8 @@
 DATABASE_HOST=database_formaio
+FACEBOOK_CLIENT_ID=<get this from https://developers.facebook.com>
+FACEBOOK_CLIENT_SECRET=<get this from https://developers.facebook.com>
+GOOGLE_CLIENT_ID=<get this from https://console.developers.google.com>
+GOOGLE_CLIENT_SECRET=<get this from https://console.developers.google.com>
+ADMIN_EMAIL=<change this to desired email address>
+ADMIN_USERNAME=<change this to desired username>
+ADMIN_PASSWORD=<change this to desired password>
