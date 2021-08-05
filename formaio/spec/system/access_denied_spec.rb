@@ -4,7 +4,7 @@ RSpec.describe "Access" do
 		visit '/users'
 		expect(page.text).to match(/You are not authorized to access this page./)
 	end
-	it "shows home page",js: true do
+	it "shows home page" do
 		visit root_path
 		expect(page.text).to match(/Home Page/)
 	end
