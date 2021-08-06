@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @client_form_type.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @client_form_type.description %>
+</p>
+
+<p>
+  <strong>Is activ:</strong>
+  <%= @client_form_type.is_activ %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @client_form_type.price %>
+</p>
+
+<%= link_to 'Edit', edit_client_form_type_path(@client_form_type) %> |
+<%= link_to 'Back', client_form_types_path %>

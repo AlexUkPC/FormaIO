@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @client_form.name %>
+</p>
+
+<p>
+  <strong>Total price:</strong>
+  <%= @client_form.total_price %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @client_form.status %>
+</p>
+
+<p>
+  <strong>Is payed:</strong>
+  <%= @client_form.is_payed %>
+</p>
+
+<p>
+  <strong>Client form type:</strong>
+  <%= @client_form.client_form_type_id %>
+</p>
+
+<p>
+  <strong>Properties:</strong>
+  <%= @client_form.properties %>
+</p>
+
+<%= link_to 'Edit', edit_client_form_path(@client_form) %> |
+<%= link_to 'Back', client_forms_path %>

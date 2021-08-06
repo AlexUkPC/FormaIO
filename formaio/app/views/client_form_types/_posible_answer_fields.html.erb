@@ -1,0 +1,13 @@
+<fieldset class="nested-fields">
+  <div class="field">
+    <%= f.label :answer %>
+    <%= f.text_field :answer %>
+  </div>
+
+  <div class="field">
+    <%= f.label :section %>
+    <%= f.text_field :section %>
+  </div>
+
+  <%= link_to_remove_association "Remove Answer", f %>
+</fieldset>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :client_form_types
+  resources :client_forms
   namespace :settings do
     resource :user, only: [:show, :update]
   end
