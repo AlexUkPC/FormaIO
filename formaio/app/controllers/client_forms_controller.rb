@@ -12,7 +12,7 @@ class ClientFormsController < ApplicationController
 
   # GET /client_forms/new
   def new
-    @client_form = ClientForm.new
+    @client_form = ClientForm.new(client_form_type_id: params[:client_form_type_id])
   end
 
   # GET /client_forms/1/edit
@@ -64,6 +64,6 @@ class ClientFormsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def client_form_params
-      params.require(:client_form).permit(:name, :total_price, :status, :is_payed, :client_form_type_id, :properties)
+      params.require(:client_form).permit(:name, :total_price, :status, :is_payed, :client_form_type_id, properties:{})
     end
 end

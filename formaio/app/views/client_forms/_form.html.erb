@@ -36,10 +36,11 @@
     <%= form.number_field :client_form_type_id %>
   </div>
 
-  <div class="field">
-    <%= form.label :properties %>
-    <%= form.text_area :properties %>
-  </div>
+  <%= form.fields_for :properties, OpenStruct.new(@client_form.properties) do |builder| %>
+    <% @client_form.client_form_type.sections.each do |section| %>
+      <%= render "sections", section: section, f: builder %>
+    <% end %>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

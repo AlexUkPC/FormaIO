@@ -1,0 +1,12 @@
+<section>
+  <%= section.name %>
+  <br>
+  <%= section.extra_price %>
+  <br>
+  
+    <% section.questions.each do |question| %>
+      <%= render "client_forms/questions/#{question.answer_type}", question: question, f: f %>
+    <% end %>
+    
+</section>
+<hr>
