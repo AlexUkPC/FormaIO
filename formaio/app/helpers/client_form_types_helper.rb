@@ -1,0 +1,2 @@
+module ClientFormTypesHelper
+end

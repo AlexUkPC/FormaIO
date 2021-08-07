@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Client Form Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Is activ</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @client_form_types.each do |client_form_type| %>
+      <tr>
+        <td><%= client_form_type.name %></td>
+        <td><%= client_form_type.description %></td>
+        <td><%= client_form_type.is_activ %></td>
+        <td><%= client_form_type.price %></td>
+        <td><%= link_to 'Show', client_form_type %></td>
+        <td><%= link_to 'Edit', edit_client_form_type_path(client_form_type) %></td>
+        <td><%= link_to 'Destroy', client_form_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Client Form Type', new_client_form_type_path %>

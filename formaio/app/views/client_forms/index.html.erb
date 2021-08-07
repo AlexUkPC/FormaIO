@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Client Forms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Total price</th>
+      <th>Status</th>
+      <th>Is payed</th>
+      <th>Client form type</th>
+      <th>Properties</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @client_forms.each do |client_form| %>
+      <tr>
+        <td><%= client_form.name %></td>
+        <td><%= client_form.total_price %></td>
+        <td><%= client_form.status %></td>
+        <td><%= client_form.is_payed %></td>
+        <td><%= client_form.client_form_type_id %></td>
+        <td><%= client_form.properties %></td>
+        <td><%= link_to 'Show', client_form %></td>
+        <td><%= link_to 'Edit', edit_client_form_path(client_form) %></td>
+        <td><%= link_to 'Destroy', client_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= form_tag new_client_form_path, method: :get do %>
+  <%= select_tag :client_form_type_id, options_from_collection_for_select(ClientFormType.all, :id, :name) %>
+  <%= submit_tag "New Client Form", name: nil %>
+<% end %>

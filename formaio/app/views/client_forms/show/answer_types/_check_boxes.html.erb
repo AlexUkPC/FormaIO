@@ -1,0 +1,2 @@
+<%= collection_check_boxes( question.id,@client_form.properties[question.id.to_s].reject(&:empty?).map(&:to_i), question.posible_answer, :id, :answer, checked: @client_form.properties[question.id.to_s] == nil ? "" : (@client_form.properties[question.id.to_s].reject(&:empty?).map(&:to_i)) )  do |b|
+   b.label(:"data-value" => b.value) { b.check_box + b.text } end%>

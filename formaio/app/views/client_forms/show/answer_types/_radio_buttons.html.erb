@@ -1,0 +1,3 @@
+<%= collection_radio_buttons( question.id,@client_form.properties[question.id.to_s], question.posible_answer, :id, :answer, checked: @client_form.properties[question.id.to_s] ) do |b| 
+b.label { b.radio_button + b.text } 
+ end %>

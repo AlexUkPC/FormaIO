@@ -1,0 +1,26 @@
+<fieldset class="nested-fields">
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :extra_price %>
+    <%= f.number_field :extra_price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :is_default %>
+    <%= f.check_box :is_default %>
+  </div>
+
+  <%= f.fields_for :questions do |builder| %>
+      <%= render 'question_fields', f: builder %>
+  <% end %>
+
+  <div class="links">
+      <%= link_to_add_association "Add Question", f, :questions %>
+  </div>
+  
+  <%= link_to_remove_association "Remove Section", f %>
+</fieldset>

@@ -10,10 +10,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_02_175530) do
+ActiveRecord::Schema.define(version: 2021_08_07_152521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "client_form_posible_answers", force: :cascade do |t|
+    t.string "answer"
+    t.string "section"
+    t.bigint "client_form_question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "info"
+    t.index ["client_form_question_id"], name: "index_client_form_posible_answers_on_client_form_question_id"
+  end
+
+  create_table "client_form_questions", force: :cascade do |t|
+    t.string "question"
+    t.string "answer_type"
+    t.boolean "answers_are_sections"
+    t.text "info"
+    t.boolean "is_required"
+    t.bigint "client_form_section_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_form_section_id"], name: "index_client_form_questions_on_client_form_section_id"
+  end
+
+  create_table "client_form_sections", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_default"
+    t.decimal "extra_price"
+    t.bigint "client_form_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_form_type_id"], name: "index_client_form_sections_on_client_form_type_id"
+  end
+
+  create_table "client_form_types", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "is_activ"
+    t.decimal "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "client_forms", force: :cascade do |t|
+    t.string "name"
+    t.decimal "total_price"
+    t.string "status"
+    t.boolean "is_payed"
+    t.integer "client_form_type_id"
+    t.text "properties"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
@@ -45,4 +97,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_175530) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "client_form_posible_answers", "client_form_questions"
+  add_foreign_key "client_form_questions", "client_form_sections"
+  add_foreign_key "client_form_sections", "client_form_types"
 end

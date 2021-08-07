@@ -1,0 +1,35 @@
+<fieldset class="nested-fields">
+  <div class="field">
+    <%= f.label :question %>
+    <%= f.text_field :question %>
+  </div>
+
+  <div class="field">
+    <%= f.label :info %>
+    <%= f.text_area :info %>
+  </div>
+
+  <div class="field">
+    <%= f.label :is_required %>
+    <%= f.check_box :is_required %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :answers_are_sections %>
+    <%= f.check_box :answers_are_sections %>
+  </div>
+
+  <div class="field">
+    <%= f.label :answer_type %>
+    <%= f.select :answer_type, %w[text_field text_area check_box check_boxes radio_buttons calendar price_range number drop_down]  %>
+  </div>
+
+  <%= f.fields_for :posible_answer do |builder| %>
+      <%= render 'posible_answer_fields', f: builder %>
+  <% end %>
+
+  <div class="links">
+      <%= link_to_add_association "Add Posbile Answers", f, :posible_answer %>
+  </div>
+  <%= link_to_remove_association "Remove Question", f %>
+</fieldset>
