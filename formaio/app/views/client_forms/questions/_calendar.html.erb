@@ -1,0 +1,4 @@
+<div class="field">
+  <%= f.label question.id, question.question %>
+  <%= f.date_field question.id, value: @client_form.properties[question.id.to_s], min: Date.today %>
+</div>
