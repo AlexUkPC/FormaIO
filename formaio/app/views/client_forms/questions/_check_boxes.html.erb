@@ -1,0 +1,6 @@
+<div class="field">
+  <%= f.label question.id, question.question %>
+  <%= f.collection_check_boxes( question.id, question.posible_answer, :id, :answer, checked: @client_form.properties[question.id.to_s] == nil ? "" : (@client_form.properties[question.id.to_s].reject(&:empty?).map(&:to_i)) ) do |b| %>
+    <% b.label { b.check_box + b.text } %>
+  <% end %>
+</div>
