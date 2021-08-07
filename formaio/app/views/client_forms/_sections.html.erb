@@ -5,7 +5,7 @@
   <br>
   
     <% section.questions.each do |question| %>
-      <%= render "client_forms/questions/#{question.answer_type}", question: question, f: f %>
+      <%= render "client_forms/question_types/#{question.answer_type}", question: question, f: f %>
     <% end %>
     
 </section>
