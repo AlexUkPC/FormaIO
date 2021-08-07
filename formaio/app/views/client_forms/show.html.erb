@@ -30,5 +30,14 @@
   <%= @client_form.properties %>
 </p>
 
+<p>
+  <strong>Questions:</strong>
+  <br>
+  <% @client_form.client_form_type.sections.each do |section| %>
+    <%= render "client_forms/show/client_form_section", section: section %>
+    <br>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_client_form_path(@client_form) %> |
 <%= link_to 'Back', client_forms_path %>

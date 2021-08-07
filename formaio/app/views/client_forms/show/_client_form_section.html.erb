@@ -1,0 +1,8 @@
+<%= section.name %>
+<br>
+<% section.questions.each do |question| %>
+    <%= question.question %>
+    <br>
+    <%= render "client_forms/show/answer_types/#{question.answer_type}", question: question %>
+    <br>
+<% end %>
