@@ -21,6 +21,14 @@
     <%= form.text_field :client_form_type_id %>
   </div>
 
+  <%= form.fields_for :components do |builder| %>
+      <%= render 'component_fields', f: builder %>
+  <% end %>
+
+  <div class="links">
+      <%= link_to_add_association "Add Component", form, :components %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

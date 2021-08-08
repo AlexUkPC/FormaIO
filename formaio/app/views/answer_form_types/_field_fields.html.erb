@@ -1,0 +1,20 @@
+<fieldset class="nested-fields">
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :field_type %>
+    <%= f.select :field_type, %w[text_field text_area drop_down]  %>
+  </div>
+
+  <%= f.fields_for :posible_answer do |builder| %>
+      <%= render 'posible_answer_fields', f: builder %>
+  <% end %>
+
+  <div class="links">
+      <%= link_to_add_association "Add Posbile Answers", f, :posible_answer %>
+  </div>
+  <%= link_to_remove_association "Remove Field", f %>
+</fieldset>

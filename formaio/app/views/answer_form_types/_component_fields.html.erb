@@ -1,0 +1,21 @@
+<fieldset class="nested-fields">
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :is_text_area %>
+    <%= f.check_box :is_text_area %>
+  </div>
+
+  <%= f.fields_for :fields do |builder| %>
+      <%= render 'field_fields', f: builder %>
+  <% end %>
+
+  <div class="links">
+      <%= link_to_add_association "Add Field", f, :fields %>
+  </div>
+  
+  <%= link_to_remove_association "Remove Component", f %>
+</fieldset>
