@@ -1,0 +1,40 @@
+<%= form_with(model: answer_form) do |form| %>
+  <% if answer_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(answer_form.errors.count, "error") %> prohibited this answer_form from being saved:</h2>
+
+      <ul>
+        <% answer_form.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :answer_form_type_id %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_price %>
+    <%= form.text_field :total_price %>
+  </div>
+
+  <%= form.fields_for :properties, OpenStruct.new(@answer_form.properties) do |builder| %>
+    <% @answer_form.answer_form_type.components.each do |component| %>
+      <%= render "components", component: component, f: builder %>
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

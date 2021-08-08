@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :client_form_type_id %>
+
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -29,11 +31,6 @@
   <div class="field">
     <%= form.label :is_payed %>
     <%= form.check_box :is_payed %>
-  </div>
-
-  <div class="field">
-    <%= form.label :client_form_type_id %>
-    <%= form.number_field :client_form_type_id %>
   </div>
 
   <%= form.fields_for :properties, OpenStruct.new(@client_form.properties) do |builder| %>

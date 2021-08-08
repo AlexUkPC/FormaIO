@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Answer Forms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Total price</th>
+      <th>Answer form type</th>
+      <th>Properties</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @answer_forms.each do |answer_form| %>
+      <tr>
+        <td><%= answer_form.name %></td>
+        <td><%= answer_form.status %></td>
+        <td><%= answer_form.total_price %></td>
+        <td><%= answer_form.answer_form_type_id %></td>
+        <td><%= answer_form.properties %></td>
+        <td><%= link_to 'Show', answer_form %></td>
+        <td><%= link_to 'Edit', edit_answer_form_path(answer_form) %></td>
+        <td><%= link_to 'Destroy', answer_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= form_tag new_answer_form_path, method: :get do %>
+  <%= select_tag :answer_form_type_id, options_from_collection_for_select(AnswerFormType.all, :id, :name) %>
+  <%= submit_tag "New Answer Form", name: nil %>
+<% end %>

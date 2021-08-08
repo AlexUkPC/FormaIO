@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @answer_form_type.name %>
+</p>
+
+<p>
+  <strong>Client form type:</strong>
+  <%= @answer_form_type.client_form_type_id %>
+</p>
+
+<%= link_to 'Edit', edit_answer_form_type_path(@answer_form_type) %> |
+<%= link_to 'Back', answer_form_types_path %>
