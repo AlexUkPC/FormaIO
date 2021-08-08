@@ -64,6 +64,6 @@ class AnswerFormTypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def answer_form_type_params
-      params.require(:answer_form_type).permit(:name, :client_form_type_id, components_attributes:[:id, :is_text_area, :name, fields_attributes:[:id, :name, :field_type, posible_answer_attributes:[:id, :answer]]])
+      params.require(:answer_form_type).permit(:name, :client_form_type_id, components_attributes:[:id, :is_text_area, :name, properties:{}, fields_attributes:[:id, :name, :field_type, posible_answer_attributes:[:id, :answer]]])
     end
 end

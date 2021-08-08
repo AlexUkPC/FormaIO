@@ -5,6 +5,7 @@
 #  id                  :bigint           not null, primary key
 #  is_text_area        :boolean
 #  name                :string
+#  properties          :text
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  answer_form_type_id :bigint           not null

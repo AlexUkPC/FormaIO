@@ -1,10 +1,12 @@
 <section>
-  <%= component.name %>
-  <br>
-  
+add new comp
+  <%= f.label component.id, component.name %>
+  <%= f.fields_for component.id.to_s, OpenStruct.new(@answer_form.properties[component.id.to_s]) do |builder| %>
     <% component.fields.each do |field| %>
-      <%= render "answer_forms/field_types/#{field.field_type}", field: field, f: f %>
+      <%= render "answer_forms/field_types/#{field.field_type}",component: component, field: field, f: builder %>
     <% end %>
+  <% end %>
+    
     
 </section>
 <hr>
