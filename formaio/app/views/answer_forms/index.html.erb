@@ -32,4 +32,7 @@
 
 <br>
 
-<%= link_to 'New Answer Form', new_answer_form_path %>
+<%= form_tag new_answer_form_path, method: :get do %>
+  <%= select_tag :answer_form_type_id, options_from_collection_for_select(AnswerFormType.all, :id, :name) %>
+  <%= submit_tag "New Answer Form", name: nil %>
+<% end %>

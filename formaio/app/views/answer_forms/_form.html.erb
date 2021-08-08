@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :answer_form_type_id %>
+
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -26,15 +28,11 @@
     <%= form.text_field :total_price %>
   </div>
 
-  <div class="field">
-    <%= form.label :answer_form_type_id %>
-    <%= form.number_field :answer_form_type_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :properties %>
-    <%= form.text_area :properties %>
-  </div>
+  <%= form.fields_for :properties, OpenStruct.new(@answer_form.properties) do |builder| %>
+    <% @answer_form.answer_form_type.components.each do |component| %>
+      <%= render "components", component: component, f: builder %>
+    <% end %>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

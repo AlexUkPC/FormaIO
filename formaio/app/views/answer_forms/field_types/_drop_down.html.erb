@@ -1,0 +1,4 @@
+<div class="field">
+  <%= f.label field.id, field.name %>
+  <%= f.collection_select( field.id, field.posible_answer, :id, :answer, selected: @answer_form.properties[field.id.to_s]) %>
+</div>

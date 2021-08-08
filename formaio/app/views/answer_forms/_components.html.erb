@@ -1,0 +1,10 @@
+<section>
+  <%= component.name %>
+  <br>
+  
+    <% component.fields.each do |field| %>
+      <%= render "answer_forms/field_types/#{field.field_type}", field: field, f: f %>
+    <% end %>
+    
+</section>
+<hr>
