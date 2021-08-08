@@ -10,10 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_07_152521) do
+ActiveRecord::Schema.define(version: 2021_08_08_093432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answer_form_components", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_text_area"
+    t.bigint "answer_form_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["answer_form_type_id"], name: "index_answer_form_components_on_answer_form_type_id"
+  end
+
+  create_table "answer_form_fields", force: :cascade do |t|
+    t.string "name"
+    t.string "field_type"
+    t.bigint "answer_form_component_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["answer_form_component_id"], name: "index_answer_form_fields_on_answer_form_component_id"
+  end
+
+  create_table "answer_form_posible_answers", force: :cascade do |t|
+    t.string "answer"
+    t.bigint "answer_form_field_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["answer_form_field_id"], name: "index_answer_form_posible_answers_on_answer_form_field_id"
+  end
+
+  create_table "answer_form_types", force: :cascade do |t|
+    t.string "name"
+    t.bigint "client_form_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_form_type_id"], name: "index_answer_form_types_on_client_form_type_id"
+  end
+
+  create_table "answer_forms", force: :cascade do |t|
+    t.string "name"
+    t.string "status"
+    t.decimal "total_price"
+    t.integer "answer_form_type_id"
+    t.text "properties"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "client_form_posible_answers", force: :cascade do |t|
     t.string "answer"
@@ -97,6 +141,10 @@ ActiveRecord::Schema.define(version: 2021_08_07_152521) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "answer_form_components", "answer_form_types"
+  add_foreign_key "answer_form_fields", "answer_form_components"
+  add_foreign_key "answer_form_posible_answers", "answer_form_fields"
+  add_foreign_key "answer_form_types", "client_form_types"
   add_foreign_key "client_form_posible_answers", "client_form_questions"
   add_foreign_key "client_form_questions", "client_form_sections"
   add_foreign_key "client_form_sections", "client_form_types"

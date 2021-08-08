@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @answer_form.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @answer_form.status %>
+</p>
+
+<p>
+  <strong>Total price:</strong>
+  <%= @answer_form.total_price %>
+</p>
+
+<p>
+  <strong>Answer form type:</strong>
+  <%= @answer_form.answer_form_type_id %>
+</p>
+
+<p>
+  <strong>Properties:</strong>
+  <%= @answer_form.properties %>
+</p>
+
+<%= link_to 'Edit', edit_answer_form_path(@answer_form) %> |
+<%= link_to 'Back', answer_forms_path %>

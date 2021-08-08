@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :answer_form_types
+  resources :answer_forms
   resources :client_form_types
   resources :client_forms
   namespace :settings do

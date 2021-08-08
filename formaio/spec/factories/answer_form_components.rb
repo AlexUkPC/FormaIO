@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: answer_form_components
+#
+#  id                  :bigint           not null, primary key
+#  is_text_area        :boolean
+#  name                :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  answer_form_type_id :bigint           not null
+#
+# Indexes
+#
+#  index_answer_form_components_on_answer_form_type_id  (answer_form_type_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (answer_form_type_id => answer_form_types.id)
+#
+FactoryBot.define do
+  factory :answer_form_component do
+    name { "MyString" }
+    is_text_area { false }
+    answer_form_type { nil }
+  end
+end
