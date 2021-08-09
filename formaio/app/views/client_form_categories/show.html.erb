@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @client_form_category.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @client_form_category.description %>
+</p>
+
+<p>
+  <strong>Icon:</strong>
+  <%= @client_form_category.icon %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @client_form_category.color %>
+</p>
+
+<%= link_to 'Edit', edit_client_form_category_path(@client_form_category) %> |
+<%= link_to 'Back', client_form_categories_path %>

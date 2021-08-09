@@ -1,5 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Client Form</h1>
+<% @client_form_types.each do |client_form_type| %>
+  <%=  link_to client_form_type.name, new_client_form_path(client_form_type_id: client_form_type.id)  %>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
+===============================================
+<br>
 <h1>Client Form Types</h1>
 
 <table>
@@ -20,6 +31,11 @@
         <td><%= client_form_type.description %></td>
         <td><%= client_form_type.is_activ %></td>
         <td><%= client_form_type.price %></td>
+        <td>
+          <% for client_form_category in client_form_type.client_form_categories %>
+            <%= link_to client_form_category.name, edit_client_form_category_path(client_form_category.id) %> <br>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', client_form_type %></td>
         <td><%= link_to 'Edit', edit_client_form_type_path(client_form_type) %></td>
         <td><%= link_to 'Destroy', client_form_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,3 +47,4 @@
 <br>
 
 <%= link_to 'New Client Form Type', new_client_form_type_path %>
+

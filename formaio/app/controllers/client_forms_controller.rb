@@ -4,6 +4,8 @@ class ClientFormsController < ApplicationController
   # GET /client_forms or /client_forms.json
   def index
     @client_forms = ClientForm.all
+    @client_form_types = ClientFormType.all
+    @client_form_categories = ClientFormCategory.all
   end
 
   # GET /client_forms/1 or /client_forms/1.json

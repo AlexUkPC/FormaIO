@@ -32,10 +32,12 @@
   </tbody>
 </table>
 
-
+<br>
+!!!!!!!!!!!!!!!!!!!!
+<br>
 <% @client_form_categories.each do |client_form_category| %>
   <% if client_form_category.client_form_types.count()>1 %>
-    <%= link_to client_form_category.name, client_form_types_path(:client_form_category => client_form_category.id) %>
+    da
   <% else %>
     <% client_form_category.client_form_types.each do |client_form_type| %>
       <%=  link_to client_form_type.name, new_client_form_path(client_form_type_id: client_form_type.id)  %>
@@ -45,13 +47,3 @@
 
 <% end %>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-=============== List all forms ===============
-<br>
-<% @client_form_types.each do |client_form_type| %>
-  <%=  link_to client_form_type.name, new_client_form_path(client_form_type_id: client_form_type.id)  %>
-<% end %>

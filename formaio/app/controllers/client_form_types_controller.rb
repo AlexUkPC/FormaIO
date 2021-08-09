@@ -3,7 +3,13 @@ class ClientFormTypesController < ApplicationController
 
   # GET /client_form_types or /client_form_types.json
   def index
-    @client_form_types = ClientFormType.all
+    @client_form_category = ClientFormCategory.all
+    client_form_category = params[:client_form_category]
+    if !client_form_category.nil?
+      @client_form_types = ClientFormType.joins(:client_form_categories).where(client_form_categories: {id: client_form_category})
+    else
+      @client_form_types = ClientFormType.all
+    end
   end
 
   # GET /client_form_types/1 or /client_form_types/1.json
@@ -64,6 +70,6 @@ class ClientFormTypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def client_form_type_params
-      params.require(:client_form_type).permit(:name, :description, :is_activ, :price, sections_attributes:[:id, :extra_price, :is_default, :name, questions_attributes:[:id, :answer_type, :answers_are_sections, :info, :is_required, :question, posible_answer_attributes:[:id, :answer, :section, :info]]])
+      params.require(:client_form_type).permit(:name, :description, :is_activ, :price, client_form_category_ids: [], client_form_categories_attributes:[:name, :description, :icon, :color, :_destroy], sections_attributes:[:id, :extra_price, :is_default, :name, questions_attributes:[:id, :answer_type, :answers_are_sections, :info, :is_required, :question, posible_answer_attributes:[:id, :answer, :section, :info]]])
     end
 end

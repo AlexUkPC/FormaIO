@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_08_104513) do
+ActiveRecord::Schema.define(version: 2021_08_09_092641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,20 @@ ActiveRecord::Schema.define(version: 2021_08_08_104513) do
     t.text "properties"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "client_form_categories", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "icon"
+    t.string "color"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "client_form_categories_types", id: false, force: :cascade do |t|
+    t.bigint "client_form_type_id", null: false
+    t.bigint "client_form_category_id", null: false
   end
 
   create_table "client_form_posible_answers", force: :cascade do |t|
