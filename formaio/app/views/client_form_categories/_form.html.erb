@@ -1,0 +1,37 @@
+<%= form_with(model: client_form_category) do |form| %>
+  <% if client_form_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(client_form_category.errors.count, "error") %> prohibited this client_form_category from being saved:</h2>
+
+      <ul>
+        <% client_form_category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :icon %>
+    <%= form.text_field :icon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :color %>
+    <%= form.text_field :color %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
