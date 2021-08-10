@@ -14,7 +14,18 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.collaborator?
-      can :read, User
+      can :read, ClientForm
+      can :create, ClientForm
+      can :update, ClientForm, is_payed: false
+      can :delete, ClientForm, is_payed: false
+      can :read, AnswerForm
+      can :create, AnswerForm
+      can :update, AnswerForm
+    elsif user.user?
+      can :read, ClientForm
+      can :create, ClientForm
+      can :update, ClientForm, is_payed: false
+      can :delete, ClientForm, is_payed: false
     end
     
     # Define abilities for the passed in user here. For example:

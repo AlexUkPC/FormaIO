@@ -1,5 +1,7 @@
 class AnswerFormTypesController < ApplicationController
   before_action :set_answer_form_type, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  load_and_authorize_resource
 
   # GET /answer_form_types or /answer_form_types.json
   def index
