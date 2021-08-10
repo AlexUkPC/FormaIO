@@ -12,6 +12,7 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  client_form_type_id  :integer
+#  user_id              :integer
 #
 FactoryBot.define do
   factory :client_form do

@@ -26,6 +26,7 @@
 #  index_users_on_username              (username) UNIQUE
 #
 class User < ApplicationRecord
+  has_many :client_forms
   validates :username, presence: true
   enum role: [:user, :collaborator, :admin]
   after_initialize :set_default_role, :if => :new_record?

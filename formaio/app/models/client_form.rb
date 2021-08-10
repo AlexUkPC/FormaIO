@@ -12,8 +12,10 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  client_form_type_id  :integer
+#  user_id              :integer
 #
 class ClientForm < ApplicationRecord
+  belongs_to :user
   belongs_to :client_form_type
 	serialize :properties, Hash
   has_rich_text :preform_term_and_conditions

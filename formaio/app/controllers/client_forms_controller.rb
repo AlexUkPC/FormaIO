@@ -16,7 +16,7 @@ class ClientFormsController < ApplicationController
 
   # GET /client_forms/new
   def new
-    @client_form = ClientForm.new(client_form_type_id: params[:client_form_type_id])
+    @client_form = current_user.client_forms.build(client_form_type_id: params[:client_form_type_id])
   end
 
   # GET /client_forms/1/edit
@@ -25,7 +25,7 @@ class ClientFormsController < ApplicationController
 
   # POST /client_forms or /client_forms.json
   def create
-    @client_form = ClientForm.new(client_form_params)
+    @client_form = current_user.client_forms.build(client_form_params)
 
     respond_to do |format|
       if @client_form.save
