@@ -26,6 +26,7 @@ class Ability
       can :create, ClientForm
       can :update, ClientForm, is_payed: false
       can :delete, ClientForm, is_payed: false
+      can :read, AnswerForm
     end
     
     # Define abilities for the passed in user here. For example:

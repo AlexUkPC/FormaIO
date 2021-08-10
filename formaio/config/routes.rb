@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'dashboard/index', as:"dashboard"
   resources :client_form_categories
   resources :answer_form_types
   resources :answer_forms
