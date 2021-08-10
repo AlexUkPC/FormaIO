@@ -1,5 +1,7 @@
 class ClientFormCategoriesController < ApplicationController
   before_action :set_client_form_category, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  load_and_authorize_resource
 
   # GET /client_form_categories or /client_form_categories.json
   def index
