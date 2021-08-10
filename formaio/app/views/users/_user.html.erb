@@ -1,5 +1,23 @@
 <td>
-  <%= link_to user.email, user %>
+  <%= user.username %>
+</td>
+<td>
+  <%= user.email %>
+</td>
+<td>
+  <%= user.first_name %>
+</td>
+<td>
+  <%= user.last_name %>
+</td>
+<td>
+  <%= user.city %>
+</td>
+<td>
+  <%= user.phone_number %>
+</td>
+<td>
+  <%= link_to "View", user %>
 </td>
 <% if can? :manage, User %>
   <td>
@@ -10,5 +28,6 @@
   </td>
   <td>
     <%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete) unless user == current_user %>
+    <%= link_to "Edit user", edit_user_path(user.id) %>
   </td>
 <% end %>
