@@ -17,4 +17,5 @@ class ClientFormType < ApplicationRecord
   has_and_belongs_to_many :client_form_categories
   accepts_nested_attributes_for :client_form_categories, reject_if: :all_blank, allow_destroy: true
   has_one :answer_form_type, dependent: :destroy
+  has_rich_text :preform_term_and_conditions
 end
