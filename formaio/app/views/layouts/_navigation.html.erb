@@ -1,6 +1,9 @@
 <nav>
   <ul>
     <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Forms" %></li>
+    <li><%= link_to "Blog" %></li>
+    <li><%= link_to "Logo/Design" %></li>
     <% if current_user %>
       <li>Hello <%= current_user.email %></li>
       <li>Role: <%= current_user.role %></li>
@@ -8,7 +11,7 @@
         <li><%= link_to "Users", users_path %></li>
       <% end %>
       <% if (can? :read, User )&& (cannot? :manage, User) %>
-        <li>Esti colaborator</li>
+        <li>Esti colaborator(ignore this)</li>
       <% end %>
       <li><%= link_to "Profile", edit_user_registration_path %></li>
       <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
