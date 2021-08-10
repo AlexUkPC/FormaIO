@@ -66,6 +66,6 @@ class ClientFormsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def client_form_params
-      params.require(:client_form).permit(:name, :total_price, :status, :is_payed, :client_form_type_id, properties:{})
+      params.require(:client_form).permit(:name, :total_price, :status, :is_payed, :client_form_type_id, :preform_term_and_conditions, :agee_preform_t_and_c, properties:{})
     end
 end

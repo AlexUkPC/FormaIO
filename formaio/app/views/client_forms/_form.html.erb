@@ -33,13 +33,24 @@
     <%= form.check_box :is_payed %>
   </div>
 
-  <%= form.fields_for :properties, OpenStruct.new(@client_form.properties) do |builder| %>
-    <% @client_form.client_form_type.sections.each do |section| %>
-      <%= render "sections", section: section, f: builder %>
-    <% end %>
-  <% end %>
+  <%= form.hidden_field :preform_term_and_conditions, value: @client_form.client_form_type.preform_term_and_conditions %>
+  
+    <div id="tc_text"><%= @client_form.client_form_type.preform_term_and_conditions %></div>
+    <div class="field">
+      <%= form.label :agee_preform_t_and_c, id: "tc_label" %>
+      <%= form.check_box :agee_preform_t_and_c, id: "tc" %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+
+  <div id="formular" style="display:none">
+    <%= form.fields_for :properties, OpenStruct.new(@client_form.properties) do |builder| %>
+      <% @client_form.client_form_type.sections.each do |section| %>
+        <%= render "sections", section: section, f: builder %>
+      <% end %>
+    <% end %>
+    
+    <div class="actions">
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>

@@ -32,6 +32,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :preform_term_and_conditions %>
+    <%= form.rich_text_area :preform_term_and_conditions %>
+  </div>
+
+  <div class="field">
     <h3>Category</h3>
     <%= form.collection_check_boxes(:client_form_category_ids, ClientFormCategory.all, :id, :name) do |b| %>
       <% b.label {b.check_box + b.text} %>
