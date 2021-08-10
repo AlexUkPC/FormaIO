@@ -1,1 +1,10 @@
 <h1>Home Page</h1>
+<% @client_form_categories.each do |client_form_category| %>
+  <% if client_form_category.client_form_types.count()>1 %>
+    <%= link_to client_form_category.name, home_subcategory_path(client_form_category: client_form_category.id,category_name: client_form_category.name) , class: "category" %>
+  <% else %>
+    <% client_form_category.client_form_types.each do |client_form_type| %>
+      <%=  link_to client_form_type.name, new_client_form_path(client_form_type_id: client_form_type.id), class: "category"  %>
+    <% end %>
+  <% end %>
+<% end %>

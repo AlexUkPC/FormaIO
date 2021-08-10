@@ -1,0 +1,4 @@
+<h1><%= @category_name %></h1>
+<% @client_form_types.each do |client_form_type| %>
+  <%=  link_to client_form_type.name, new_client_form_path(client_form_type_id: client_form_type.id), class: "category"  %>
+<% end %>
