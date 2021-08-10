@@ -14,7 +14,7 @@ class AnswerFormsController < ApplicationController
 
   # GET /answer_forms/new
   def new
-    @answer_form = AnswerForm.new(answer_form_type_id: params[:answer_form_type_id])
+    @answer_form = current_user.answer_forms.build(answer_form_type_id: params[:answer_form_type_id])
   end
 
   # GET /answer_forms/1/edit
@@ -23,7 +23,7 @@ class AnswerFormsController < ApplicationController
 
   # POST /answer_forms or /answer_forms.json
   def create
-    @answer_form = AnswerForm.new(answer_form_params)
+    @answer_form = current_user.answer_forms.build(answer_form_params)
 
     respond_to do |format|
       if @answer_form.save

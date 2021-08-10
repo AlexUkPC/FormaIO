@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :client_form_type_id %>
-    <%= form.text_field :client_form_type_id %>
+    <%= form.select :client_form_type_id, options_from_collection_for_select(ClientFormType.all, :id, :name)  %>
   </div>
 
   <%= form.fields_for :components do |builder| %>
