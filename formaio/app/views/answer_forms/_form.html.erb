@@ -1,3 +1,44 @@
+<%= answer_form.client_form.name %>
+<%= answer_form.client_form.properties %>
+<p>
+  <strong>Name:</strong>
+  <%= answer_form.client_form.name %>
+</p>
+
+<p>
+  <strong>Total price:</strong>
+  <%= answer_form.client_form.total_price %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= answer_form.client_form.status %>
+</p>
+
+<p>
+  <strong>Is payed:</strong>
+  <%= answer_form.client_form.is_payed %>
+</p>
+
+<p>
+  <strong>Client form type:</strong>
+  <%= answer_form.client_form.client_form_type_id %>
+</p>
+
+<p>
+  <strong>Properties:</strong>
+  <%= answer_form.client_form.properties %>
+</p>
+
+<p>
+  <strong>Questions:</strong>
+  <br>
+  <% answer_form.client_form.client_form_type.sections.each do |section| %>
+    <%= render "client_forms/show/client_form_section", section: section %>
+    <br>
+  <% end %>
+</p>
+===================================
 <%= form_with(model: answer_form) do |form| %>
   <% if answer_form.errors.any? %>
     <div id="error_explanation">
@@ -13,7 +54,7 @@
 
   <%= form.hidden_field :answer_form_type_id %>
   <%= form.hidden_field :client_form_id %>
-
+  
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
