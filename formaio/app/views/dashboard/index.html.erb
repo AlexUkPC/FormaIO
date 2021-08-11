@@ -22,15 +22,25 @@
   <thead>
     <tr>
       <th>Id</th>
-      <th>Name</th>
-      <th>Total price</th>
+      <th>Project name</th>
+      <th>Client username</th>
+      <th>Type</th>
+      <th>How much the client payed</th>
+      <th>Budget</th>
+      <th>Date of achizition</th>
+      <th>Date of creation</th>
+      <th>Date of answer</th>
       <th>Status</th>
-      <th>Is payed</th>
-      <th>Client form type</th>
-      <th>User</th>
+      <th>Payed?</th>
+      <th>View</th>
+      <th>Download</th>
+      <th>Print</th>
+      <th>Edit</th>
+      <th>Delete</th>
+      <th>Answer</th>
+      <th>View answer</th>
+      <th>Answer total</th>
       <th>Who answered</th>
-      <th>Properties</th>
-      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -40,26 +50,40 @@
         <tr>
           <td><%= client_form.id %></td>
           <td><%= client_form.name %></td>
+          <td><%= client_form.user.username %></td>
+          <td><%= client_form.client_form_type.name %></td>
           <td><%= client_form.total_price %></td>
+          <td>to do</td>
+          <td>to do</td>
+          <td><%= client_form.created_at.strftime("%d/%m/%Y") %></td>
+          <td><%= client_form.answer_form.created_at.strftime("%d/%m/%Y") %></td>
           <td><%= client_form.status %></td>
           <td><%= client_form.is_payed %></td>
-          <td><%= client_form.client_form_type.name %></td>
-          <td><%= client_form.user.username %></td>
-          <td><% if client_form.answer_form %><%= client_form.answer_form.user.username %>
-          <% end %>
-          </td>
-          <td><%= client_form.properties %></td>
-          <td><%= link_to 'Show', client_form %></td>
+          <td><%= link_to 'View', client_form %></td>
+          <td>to do later PDF</td>
+          <td>to do later print</td>
           <% if (can? :update, client_form) || (!client_form.is_payed) %>
             <td><%= link_to 'Edit', edit_client_form_path(client_form) %></td>
           <% end %>
           <% if (can? :update, client_form) || (!client_form.is_payed) %>
-            <td><%= link_to 'Destroy', client_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Delete', client_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
-          <td><%= link_to "Answer", new_answer_form_path(answer_form_type_id: client_form.client_form_type.answer_form_type,client_form_id: client_form.id ) %></td>
+          <td>
+            <%= link_to "Answer", new_answer_form_path(answer_form_type_id: client_form.client_form_type.answer_form_type,client_form_id: client_form.id ) %>
+          </td>
           <td>
             <% if client_form.answer_form %>
-            <%= link_to "View Answer", answer_form_path(id: client_form.answer_form ) %>
+              <%= link_to "View Answer", answer_form_path(id: client_form.answer_form ) %>
+            <% end %>
+          </td>
+          <td>
+            <% if client_form.answer_form %>
+              <%= client_form.answer_form.total_price %>
+            <% end %>
+          </td>
+          <td>
+            <% if client_form.answer_form %>
+              <%= client_form.answer_form.user.username %>
             <% end %>
           </td>
         </tr>
