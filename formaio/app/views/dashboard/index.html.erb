@@ -56,8 +56,11 @@
           <% if (can? :update, client_form) || (!client_form.is_payed) %>
             <td><%= link_to 'Destroy', client_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
+          <td><%= link_to "Answer", new_answer_form_path(answer_form_type_id: client_form.client_form_type.answer_form_type,client_form_id: client_form.id ) %></td>
           <td>
+            <% if client_form.answer_form %>
             <%= link_to "View Answer", answer_form_path(id: client_form.answer_form ) %>
+            <% end %>
           </td>
         </tr>
       <% end %>

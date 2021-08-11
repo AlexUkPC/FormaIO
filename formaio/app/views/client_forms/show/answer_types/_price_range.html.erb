@@ -1,1 +1,5 @@
-<%= @client_form.properties[question.id.to_s] %>    
+<% if @answer_form %>
+  <%= @answer_form.client_form.properties[question.id.to_s] %>
+<% else %>
+  <%= @client_form.properties[question.id.to_s] %>
+<% end %>
