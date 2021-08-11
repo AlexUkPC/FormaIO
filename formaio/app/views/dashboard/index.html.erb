@@ -28,6 +28,7 @@
       <th>Is payed</th>
       <th>Client form type</th>
       <th>User</th>
+      <th>Who answered</th>
       <th>Properties</th>
       <th colspan="4"></th>
     </tr>
@@ -44,6 +45,9 @@
           <td><%= client_form.is_payed %></td>
           <td><%= client_form.client_form_type.name %></td>
           <td><%= client_form.user.username %></td>
+          <td><% if client_form.answer_form %><%= client_form.answer_form.user.username %>
+          <% end %>
+          </td>
           <td><%= client_form.properties %></td>
           <td><%= link_to 'Show', client_form %></td>
           <% if (can? :update, client_form) || (!client_form.is_payed) %>
@@ -52,6 +56,9 @@
           <% if (can? :update, client_form) || (!client_form.is_payed) %>
             <td><%= link_to 'Destroy', client_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
+          <td>
+            <%= link_to "Answer", new_answer_form_path(answer_form_type_id: client_form.client_form_type.answer_form_type,client_form_id: client_form.id ) %>
+          </td>
         </tr>
       <% end %>
     <% end %>

@@ -14,7 +14,7 @@ class AnswerFormsController < ApplicationController
 
   # GET /answer_forms/new
   def new
-    @answer_form = current_user.answer_forms.build(answer_form_type_id: params[:answer_form_type_id])
+    @answer_form = current_user.answer_forms.build(answer_form_type_id: params[:answer_form_type_id], client_form_id: params[:client_form_id])
   end
 
   # GET /answer_forms/1/edit
@@ -66,6 +66,6 @@ class AnswerFormsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def answer_form_params
-      params.require(:answer_form).permit(:name, :status, :total_price, :answer_form_type_id, properties:{})
+      params.require(:answer_form).permit(:name, :status, :total_price, :answer_form_type_id, :client_form_id, properties:{})
     end
 end
