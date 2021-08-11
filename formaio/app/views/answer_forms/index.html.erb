@@ -5,11 +5,13 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th>Status</th>
       <th>Total price</th>
       <th>Answer form type</th>
       <th>User</th>
+      <th>Client form</th>
       <th>Properties</th>
       <th colspan="3"></th>
     </tr>
@@ -18,11 +20,13 @@
   <tbody>
     <% @answer_forms.each do |answer_form| %>
       <tr>
+        <td><%= answer_form.id %></td>
         <td><%= answer_form.name %></td>
         <td><%= answer_form.status %></td>
         <td><%= answer_form.total_price %></td>
         <td><%= answer_form.answer_form_type.name %></td>
         <td><%= answer_form.user.username %></td>
+        <td><%= answer_form.client_form_id %></td>
         <td><%= answer_form.properties %></td>
         <td><%= link_to 'Show', answer_form %></td>
         <td><%= link_to 'Edit', edit_answer_form_path(answer_form) %></td>

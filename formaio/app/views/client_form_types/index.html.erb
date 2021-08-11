@@ -6,6 +6,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th>Description</th>
       <th>Is activ</th>
@@ -17,10 +18,16 @@
   <tbody>
     <% @client_form_types.each do |client_form_type| %>
       <tr>
+        <td><%= client_form_type.id %></td>
         <td><%= client_form_type.name %></td>
         <td><%= client_form_type.description %></td>
         <td><%= client_form_type.is_activ %></td>
         <td><%= client_form_type.price %></td>
+        <td>
+          <% if client_form_type.answer_form_type %>
+            <%= client_form_type.answer_form_type.name %>
+          <% end %>
+        </td>
         <td>
           <% for client_form_category in client_form_type.client_form_categories %>
             <%= link_to client_form_category.name, edit_client_form_category_path(client_form_category.id) %> <br>

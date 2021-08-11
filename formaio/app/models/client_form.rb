@@ -19,4 +19,6 @@ class ClientForm < ApplicationRecord
   belongs_to :client_form_type
 	serialize :properties, Hash
   has_rich_text :preform_term_and_conditions
+  has_one :answer_form
+  has_one :answer_form_type, through: :client_form_type
 end
