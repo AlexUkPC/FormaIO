@@ -56,7 +56,7 @@
           <td>to do</td>
           <td>to do</td>
           <td><%= client_form.created_at.strftime("%d/%m/%Y") %></td>
-          <td><%= client_form.answer_form.created_at.strftime("%d/%m/%Y") %></td>
+          <td><% if client_form.answer_form %><%= client_form.answer_form.created_at.strftime("%d/%m/%Y") %><% end %></td>
           <td><%= client_form.status %></td>
           <td><%= client_form.is_payed %></td>
           <td><%= link_to 'View', client_form %></td>
