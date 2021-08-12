@@ -327,7 +327,6 @@ s_printer = {
 }
 s_final = {
   name: "Final Section",
-  extra_price: 20,
   questions_attributes: [{
       question: "DACA AVETI ALTE OBSERVATII DESPRE CE SA AVEM IN VEDERE PRIVIND CONFIGURAREA PC-ULUI VA RUGAM SA LE SCRIETI MAI JOS.", 
       info: info,
@@ -352,13 +351,28 @@ s_final = {
     }
   ]
 }
+AnswerForm.delete_all
+AnswerFormPosibleAnswer.delete_all
+AnswerFormField.delete_all
+AnswerFormComponent.delete_all
+AnswerFormType.delete_all
+
+ClientForm.delete_all
+ClientFormPosibleAnswer.delete_all
+ClientFormQuestion.delete_all
+ClientFormSection.delete_all
+ClientFormType.delete_all
+
+ClientFormCategory.delete_all
+
 cat_laptop = ClientFormCategory.create!(name: "Laptop",description: lorem)
 cat_perif = ClientFormCategory.create!(name: "Periferice",description: lorem)
 cat_comp = ClientFormCategory.create!(name: "Componente",description: lorem)
 cat_impr = ClientFormCategory.create!(name: "Imprimanta",description: lorem)
 cat_cam = ClientFormCategory.create!(name: "Camere Supraveghere",description: lorem)
 cat_pc = ClientFormCategory.create!(name: "PC",description: lorem)
-ClientFormType.create!(name: "Laptop",
+
+cft_laptop = ClientFormType.create!(name: "Laptop",
   description: lorem,
   is_activ: true,
   price: 40,
@@ -480,7 +494,7 @@ ClientFormType.create!(name: "Laptop",
     ]
   }, s_printer, s_final]
 )
-ClientFormType.create!(name: "Pc din componente",
+cft_pc_din_comp = ClientFormType.create!(name: "Pc din componente",
   description: lorem,
   is_activ: true,
   price: 60,
@@ -566,7 +580,7 @@ ClientFormType.create!(name: "Pc din componente",
     ]
   }, s_printer, s_final]
 )
-ClientFormType.create!(name: "Camere Supraveghere",
+cft_cam = ClientFormType.create!(name: "Camere Supraveghere",
   description: lorem,
   is_activ: true,
   price: 50,
@@ -800,4 +814,268 @@ ClientFormType.create!(name: "Camere Supraveghere",
       }
     ]
   }, s_final]
+)
+cft_pc_deja_conf = ClientFormType.create!(name: "Pc deja configurat",
+  description: lorem,
+  is_activ: false,
+  price: 50,
+  preform_term_and_conditions: tandc,
+  client_form_category_ids:[cat_pc.id],
+  sections_attributes: [s_final]
+)
+cft_all_in_one = ClientFormType.create!(name: "Pc all in one",
+  description: lorem,
+  is_activ: false,
+  price: 50,
+  preform_term_and_conditions: tandc,
+  client_form_category_ids:[cat_pc.id],
+  sections_attributes: [s_final]
+)
+cft_carcasa = ClientFormType.create!(name: "Carcasa",
+  description: lorem,
+  is_activ: false,
+  price: 50,
+  preform_term_and_conditions: tandc,
+  client_form_category_ids:[cat_comp.id],
+  sections_attributes: [s_final]
+)
+cft_hdd = ClientFormType.create!(name: "HDD/SSD",
+  description: lorem,
+  is_activ: false,
+  price: 50,
+  preform_term_and_conditions: tandc,
+  client_form_category_ids:[cat_comp.id],
+  sections_attributes: [s_final]
+)
+cft_ram = ClientFormType.create!(name: "Memorie ram",
+  description: lorem,
+  is_activ: false,
+  price: 50,
+  preform_term_and_conditions: tandc,
+  client_form_category_ids:[cat_comp.id],
+  sections_attributes: [s_final]
+)
+cft_video = ClientFormType.create!(name: "Placa video",
+  description: lorem,
+  is_activ: false,
+  price: 50,
+  preform_term_and_conditions: tandc,
+  client_form_category_ids:[cat_comp.id],
+  sections_attributes: [s_final]
+)
+cft_motherboard = ClientFormType.create!(name: "Placa de baza",
+  description: lorem,
+  is_activ: false,
+  price: 50,
+  preform_term_and_conditions: tandc,
+  client_form_category_ids:[cat_comp.id],
+  sections_attributes: [s_final]
+)
+cft_procesor = ClientFormType.create!(name: "Processor",
+  description: lorem,
+  is_activ: false,
+  price: 50,
+  preform_term_and_conditions: tandc,
+  client_form_category_ids:[cat_comp.id],
+  sections_attributes: [s_final]
+)
+cft_monitor = ClientFormType.create!(name: "Monitor",
+  description: lorem,
+  is_activ: false,
+  price: 50,
+  preform_term_and_conditions: tandc,
+  client_form_category_ids:[cat_perif.id],
+  sections_attributes: [s_final]
+)
+cft_casti = ClientFormType.create!(name: "Casti",
+  description: lorem,
+  is_activ: false,
+  price: 50,
+  preform_term_and_conditions: tandc,
+  client_form_category_ids:[cat_perif.id],
+  sections_attributes: [s_final]
+)
+cft_tastatura = ClientFormType.create!(name: "Tastatura",
+  description: lorem,
+  is_activ: false,
+  price: 50,
+  preform_term_and_conditions: tandc,
+  client_form_category_ids:[cat_perif.id],
+  sections_attributes: [s_final]
+)
+cft_mouse = ClientFormType.create!(name: "Mouse",
+  description: lorem,
+  is_activ: false,
+  price: 50,
+  preform_term_and_conditions: tandc,
+  client_form_category_ids:[cat_perif.id],
+  sections_attributes: [s_final]
+)
+cft_imprimanta = ClientFormType.create!(name: "Imprimanta",
+  description: lorem,
+  is_activ: false,
+  price: 50,
+  preform_term_and_conditions: tandc,
+  client_form_category_ids:[cat_impr.id],
+  sections_attributes: [s_final]
+)
+AnswerFormType.create!(name: "Laptop",
+  client_form_type_id: cft_laptop.id,
+  components_attributes: [
+    {name: "Laptop",
+    fields_attributes:[
+      {name: "Model",field_type: "text_field"},{name: "Make",field_type: "text_field"},{name: "Link",field_type: "text_field"}
+    ]},
+    {name: "HDD Extern",
+    fields_attributes:[
+      {name: "Model",field_type: "text_field"},{name: "Make",field_type: "text_field"},{name: "Link",field_type: "text_field"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "PC din componente",
+  client_form_type_id: cft_pc_din_comp.id,
+  components_attributes: [
+    {name: "Procesor",
+    fields_attributes:[
+      {name: "Model",field_type: "text_field"},{name: "Make",field_type: "drop_down",posible_answer_attributes: [{answer: "Intel"},{answer: "AMD"}]},{name: "Link",field_type: "text_field"}
+    ]},
+    {name: "Ram",
+    fields_attributes:[
+      {name: "Model",field_type: "text_field"},{name: "Make",field_type: "text_field"},{name: "Link",field_type: "text_field"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "PC deja configurat",
+  client_form_type_id: cft_pc_deja_conf.id,
+  components_attributes: [
+    {name: "PC",
+    fields_attributes:[
+      {name: "Model",field_type: "text_field"},{name: "Make",field_type: "drop_down",posible_answer_attributes: [{answer: "Intel"},{answer: "AMD"}]},{name: "Link",field_type: "text_field"}
+    ]},
+    {name: "HDD",
+    fields_attributes:[
+      {name: "Model",field_type: "text_field"},{name: "Make",field_type: "text_field"},{name: "Link",field_type: "text_field"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "PC all in one",
+  client_form_type_id: cft_all_in_one.id,
+  components_attributes: [
+    {name: "PC",
+    fields_attributes:[
+      {name: "Model",field_type: "text_field"},{name: "Make",field_type: "drop_down",posible_answer_attributes: [{answer: "Intel"},{answer: "AMD"}]},{name: "Link",field_type: "text_field"}
+    ]},
+    {name: "Ram",
+    fields_attributes:[
+      {name: "Model",field_type: "text_field"},{name: "Make",field_type: "text_field"},{name: "Link",field_type: "text_field"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "Carcasa",
+  client_form_type_id: cft_carcasa.id,
+  components_attributes: [
+    {name: "Carcasa",
+    fields_attributes:[
+      {name: "Model"},{name: "Make"},{name: "Link"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "HDD/SSD",
+  client_form_type_id: cft_hdd.id,
+  components_attributes: [
+    {name: "HDD/SSD",
+    fields_attributes:[
+      {name: "Model"},{name: "Make"},{name: "Link"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "Memorie ram",
+  client_form_type_id: cft_ram.id,
+  components_attributes: [
+    {name: "Memorie ram",
+    fields_attributes:[
+      {name: "Model"},{name: "Make"},{name: "Link"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "Placa video",
+  client_form_type_id: cft_video.id,
+  components_attributes: [
+    {name: "Placa video",
+    fields_attributes:[
+      {name: "Model"},{name: "Make"},{name: "Link"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "Placa de baza",
+  client_form_type_id: cft_motherboard.id,
+  components_attributes: [
+    {name: "Placa de baza",
+    fields_attributes:[
+      {name: "Model"},{name: "Make"},{name: "Link"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "Processor",
+  client_form_type_id: cft_procesor.id,
+  components_attributes: [
+    {name: "Processor",
+    fields_attributes:[
+      {name: "Model"},{name: "Make",field_type: "drop_down",posible_answer_attributes: [{answer: "Intel"},{answer: "AMD"}]},{name: "Link"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "Monitor",
+  client_form_type_id: cft_monitor.id,
+  components_attributes: [
+    {name: "Monitor",
+    fields_attributes:[
+      {name: "Model",field_type: "text_field"},{name: "Make",field_type: "text_field"},{name: "Link",field_type: "text_field"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "Casti",
+  client_form_type_id: cft_casti.id,
+  components_attributes: [
+    {name: "Casti",
+    fields_attributes:[
+      {name: "Model",field_type: "text_field"},{name: "Make",field_type: "text_field"},{name: "Link",field_type: "text_field"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "Tastatura",
+  client_form_type_id: cft_tastatura.id,
+  components_attributes: [
+    {name: "Tastatura",
+    fields_attributes:[
+      {name: "Model",field_type: "text_field"},{name: "Make",field_type: "text_field"},{name: "Link",field_type: "text_field"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "Mouse",
+  client_form_type_id: cft_mouse.id,
+  components_attributes: [
+    {name: "Mouse",
+    fields_attributes:[
+      {name: "Model",field_type: "text_field"},{name: "Make",field_type: "text_field"},{name: "Link",field_type: "text_field"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "Imprimanta",
+  client_form_type_id: cft_imprimanta.id,
+  components_attributes: [
+    {name: "Imprimanta",
+    fields_attributes:[
+      {name: "Model",field_type: "text_field"},{name: "Make",field_type: "text_field"},{name: "Link",field_type: "text_field"}
+    ]},
+  ]
+)
+AnswerFormType.create!(name: "Camere Supraveghere",
+  client_form_type_id: cft_cam.id,
+  components_attributes: [
+    {name: "Camere Supraveghere",
+    fields_attributes:[
+      {name: "Model",field_type: "text_field"},{name: "Make",field_type: "text_field"},{name: "Link",field_type: "text_field"}
+    ]},
+  ]
 )
