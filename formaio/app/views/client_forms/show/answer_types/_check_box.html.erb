@@ -1,5 +1,5 @@
 <% if @answer_form %>
-  <%= check_box question.id,@answer_form.client_form.properties[question.id.to_s], checked: @client_form.properties[question.id.to_s]=="1" ? true : false %>
+  <%= check_box question.id,@answer_form.client_form.properties[question.id.to_s], checked: @answer_form.client_form.properties[question.id.to_s]=="1" ? true : false %>
 <% else %>
  <%= check_box question.id,@client_form.properties[question.id.to_s], checked: @client_form.properties[question.id.to_s]=="1" ? true : false %>
 <% end %>

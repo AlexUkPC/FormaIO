@@ -1,4 +1,4 @@
 <div class="field" style="padding-left: 20px;">
   <%= f.label field.id, field.name %>
-  <%= f.collection_select( field.id, field.posible_answer, :id, :answer, selected: @answer_form.properties[component.id.to_s][field.id.to_s]) %>
+  <%= f.collection_select( field.id, field.posible_answer, :id, :answer, selected: (@answer_form.properties? ? @answer_form.properties[component.id.to_s][field.id.to_s] : "")) %>
 </div>
