@@ -4,9 +4,12 @@
   <%= section.extra_price %>
   <br>
   
+  <%= f.label section.id, section.name %>
+  <%= f.fields_for section.id.to_s, OpenStruct.new(@client_form.properties[section.id.to_s]) do |builder| %>
     <% section.questions.each do |question| %>
-      <%= render "client_forms/question_types/#{question.answer_type}", question: question, f: f %>
+      <%= render "client_forms/question_types/#{question.answer_type}", section: section, question: question, f: builder %>
     <% end %>
-    
+  <% end %>
+
 </section>
 <hr>

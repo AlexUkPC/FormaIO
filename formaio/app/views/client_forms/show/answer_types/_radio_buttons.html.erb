@@ -1,9 +1,9 @@
  <% if @answer_form %>
-  <%= collection_radio_buttons( question.id,@answer_form.client_form.properties[question.id.to_s], question.posible_answer, :id, :answer, checked: @answer_form.client_form.properties[question.id.to_s] ) do |b| 
+  <%= collection_radio_buttons( question.id,@answer_form.client_form.properties[section.id.to_s][question.id.to_s], question.posible_answer, :id, :answer, checked: @answer_form.client_form.properties[section.id.to_s][question.id.to_s] ) do |b| 
 b.label { b.radio_button + b.text } 
  end %>
 <% else %>
-  <%= collection_radio_buttons( question.id,@client_form.properties[question.id.to_s], question.posible_answer, :id, :answer, checked: @client_form.properties[question.id.to_s] ) do |b| 
+  <%= collection_radio_buttons( question.id,@client_form.properties[section.id.to_s][question.id.to_s], question.posible_answer, :id, :answer, checked: @client_form.properties[section.id.to_s][question.id.to_s] ) do |b| 
 b.label { b.radio_button + b.text } 
  end %>
 <% end %>
