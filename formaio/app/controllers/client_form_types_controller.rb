@@ -72,6 +72,6 @@ class ClientFormTypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def client_form_type_params
-      params.require(:client_form_type).permit(:name, :description, :is_activ, :price, :preform_term_and_conditions, client_form_category_ids: [], client_form_categories_attributes:[:name, :description, :icon, :color, :_destroy], sections_attributes:[:id, :extra_price, :is_default, :name, properties:{}, questions_attributes:[:id, :answer_type, :answers_are_sections, :info, :is_required, :question, posible_answer_attributes:[:id, :answer, :section, :info]]])
+      params.require(:client_form_type).permit(:name, :description, :is_activ, :price, :preform_term_and_conditions, client_form_category_ids: [], client_form_categories_attributes:[:name, :description, :icon, :color, :_destroy], sections_attributes:[:id, :extra_price, :is_default, :name, :_destroy, properties:{}, questions_attributes:[:id, :answer_type, :answers_are_sections, :info, :is_required, :question, :_destroy, posible_answer_attributes:[:id, :answer, :section, :info, :_destroy]]])
     end
 end
