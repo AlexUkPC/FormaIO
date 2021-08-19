@@ -1,0 +1,9 @@
+<div class="field">
+  <%= f.label question.id, question.question %>
+  <% question.posible_answer.each do |answer| %>
+    <%= f.label answer.id, answer.answer %>
+    <%= f.radio_button answer.id, {}, {name: 'radio_for_section', onclick: answer.answer.upcase=="beginner".upcase ? "ShowSection('#{answer.section}'), HideSection('#{(answer.section.to_i)+1}'), HideSection('#{(answer.section.to_i)+2}')" : answer.answer.upcase=="medium".upcase ? "ShowSection('#{(answer.section.to_i)-1}'), ShowSection('#{answer.section}'), HideSection('#{(answer.section.to_i)+1}')" : answer.answer.upcase=="expert".upcase ? "ShowSection('#{(answer.section.to_i)-2}'), ShowSection('#{(answer.section.to_i)-1}'), ShowSection('#{answer.section}')" : ""  } %>
+    <%=  %>
+    <br>
+  <% end %>
+</div>

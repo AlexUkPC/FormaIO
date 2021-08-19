@@ -1,5 +1,9 @@
-<section>
-  <%= section.name %>
+<% if section.is_default? %>
+  <section id="<%= section.id %>" class="btm-line">
+<% else %>
+  <section id="<%= section.id %>" class="hidden btm-line">
+<% end %>
+  <%= section.name %> | id:<%= section.id %>
   <br>
   <%= section.extra_price %>
   <br>
@@ -12,4 +16,3 @@
   <% end %>
 
 </section>
-<hr>
