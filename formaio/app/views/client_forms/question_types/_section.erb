@@ -1,0 +1,4 @@
+<div class="field">
+    <%= f.check_box question.id, {name: 'check_box_for_section', onclick: "ShowHideSection(this,'#{question.info}')" } %>
+    <%= f.label question.id, question.question %>
+</div>

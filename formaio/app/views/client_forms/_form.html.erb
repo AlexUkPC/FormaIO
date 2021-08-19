@@ -1,3 +1,15 @@
+<script type="text/javascript">
+function ShowHideSection(cb,id) {
+  var section = document.getElementById(id);
+  section.style.display = cb.checked ? "block" : "none";
+}
+function ShowSection(id) {
+  document.getElementById(id).style.display = "block";
+}
+function HideSection(id) {
+  document.getElementById(id).style.display = "none";
+}
+</script>
 <%= form_with(model: client_form) do |form| %>
   <% if client_form.errors.any? %>
     <div id="error_explanation">
