@@ -7,5 +7,5 @@ Capybara.register_driver :headless_selenium_chrome_in_container do |app|
 end
 Capybara.default_driver = :headless_selenium_chrome_in_container
 Capybara.server_host = "0.0.0.0"
-Capybara.server_port = 4000
-Capybara.app_host = 'http://web_formaio:4000'
+Capybara.server_port = 3998
+Capybara.app_host = 'http://web_formaio:3998'
